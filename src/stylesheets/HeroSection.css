@@ -1,0 +1,48 @@
+@import "./colors.css";
+
+.hero-container,
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-container {
+  background-image: url("../images/au4.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  box-shadow: inset 0 0 0 1000px rgb(34 27 49 / 57%);
+  object-fit: contain;
+}
+
+.hero-content {
+  width: 800px;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  padding: 20px;
+  font-family: Lato, sans-serif;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1.5em;
+  background-color: var(--bg-primary-transparent);
+  box-shadow: inset -5px -6px var(--box-shadow-inset);
+}
+
+.question-count {
+  font-size: 2rem;
+}
+
+.hero-text h1 {
+  font-weight: bold;
+  font-size: clamp(2.1rem, 7vw, 3.75rem);
+}
+
+.hero-text h2 {
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
+}

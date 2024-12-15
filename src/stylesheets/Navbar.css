@@ -1,0 +1,67 @@
+@import "./colors.css";
+
+/* Header stili */
+header {
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--bg-primary);
+}
+
+/* Navbar stili */
+.homepage-navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+/* Destek bağlantısı */
+.support-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.support-link:hover {
+  color: yellow; /* Hover rengi */
+}
+
+/* Coffee ikonu */
+.coffee-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+/* Logo stili */
+.website-logo {
+  width: auto;
+  height: 35px;
+  margin: 0;
+}
+
+/* Mobil uyumluluk */
+@media screen and (max-width: 590px) {
+  .homepage-navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .support-link {
+    margin-top: 1px;
+  }
+
+  .website-logo {
+    margin-bottom: 1px;
+  }
+}

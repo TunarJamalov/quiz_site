@@ -1,0 +1,165 @@
+@import "./colors.css";
+
+/* Basic CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General styles */
+
+fieldset {
+  border: none;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--text-link);
+}
+
+a:hover {
+  color: var(--text-link-hover);
+}
+
+.fcc-logo {
+  max-width: 300px;
+  padding-bottom: 50px;
+  margin: auto;
+  display: block;
+}
+
+.select-quiz-styles,
+.quiz-div,
+.results-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Quiz styles */
+.quiz-heading,
+.results-heading {
+  font-family: "Roboto Mono", monospace;
+  text-align: center;
+}
+
+.select-btn-div {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 100%;
+  padding: 0 10% 0;
+}
+
+.select-btns,
+.answers-btns {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: var(--text-primary);
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.4s ease-in-out;
+}
+
+.select-btns:hover,
+.answers-btns:hover {
+  box-shadow: -1px -1px 15px var(--effect-shadow);
+}
+
+.answers-btns--selected {
+  background-color: var(--bg-answer-selected);
+}
+
+.quiz-btn,
+.results-btn,
+.modal-btn {
+  background-color: var(--bg-button);
+  border: 3px solid var(--border-primary);
+  font-size: 1.2rem;
+  padding: 5px;
+}
+
+.quiz-answers-div {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 50%;
+}
+
+.quiz-answers-div legend {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.quiz-answers-div ul {
+  padding: 0;
+  list-style: none;
+  margin-bottom: 1rem;
+}
+hr {
+  margin: 1rem 0;
+  opacity: 0.25;
+}
+.quiz-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.quiz-text {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 10px;
+  font-size: 1.4rem;
+}
+
+.submit-btn {
+  font-weight: bold;
+  color: var(--text-primary);
+  background-color: transparent;
+  opacity: 0.5;
+  border: 2px solid var(--text-primary);
+}
+
+/* Results styles */
+.results-text {
+  font-size: 1.3rem;
+  margin-top: 20px;
+}
+
+.results-rpg-link {
+  color: var(--text-link);
+}
+
+@media screen and (max-width: 460px) {
+  .quiz-answers-div {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .select-btn-div {
+    padding: 0 20% 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .select-btn-div {
+    width: 25%;
+    padding: 0;
+  }
+}

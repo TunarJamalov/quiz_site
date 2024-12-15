@@ -1,0 +1,46 @@
+@import "./colors.css";
+
+.btn-default {
+  width: 100px;
+  margin: 10px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 18px;
+  color: var(--bg-primary);
+  background-color: var(--bg-gradient-end);
+  background-image: linear-gradient(
+    var(--bg-gradient-start),
+    var(--bg-gradient-end)
+  );
+  border-color: var(--bg-gradient-end);
+  border-width: 3px;
+}
+
+.transparent-btn {
+  height: 32px;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  background: transparent;
+  color: var(--gray-00, var(--text-primary));
+  border: 1px solid var(--gray-00, var(--border-transparent));
+  cursor: pointer;
+}
+
+.transparent-btn:hover {
+  font-weight: bold;
+  background-color: var(--gray-00, var(--bg-transparent-hover));
+  color: var(--bg-primary);
+}
+
+.large-btn {
+  width: 400px;
+  height: 70px;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 480px) {
+  .large-btn {
+    width: 200px;
+    height: 75px;
+    font-size: 22px;
+  }
+}

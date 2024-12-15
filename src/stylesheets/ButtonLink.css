@@ -1,0 +1,24 @@
+@import "./colors.css";
+
+.btn-default.btn--link {
+  /*i named it btn--link because bootstrap has already btn-link class*/
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  border-style: solid;
+  border-bottom-color: var(--border-dark-color);
+  border-right-color: var(--border-dark-color);
+}
+.btn--link:hover {
+  color: var(--bg-primary);
+}
+.btn--link:active,
+.btn--link:focus {
+  color: var(--bg-primary);
+  border-bottom-color: var(--border-light-color);
+  border-right-color: var(--border-light-color);
+  border-top-color: var(--border-dark-color);
+  border-left-color: var(--border-dark-color);
+}
