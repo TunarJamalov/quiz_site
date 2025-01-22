@@ -1,5 +1,5 @@
 import "../stylesheets/Navbar.css";
-import fccLogo from "../images/au3.webp";
+
 import coffeeIcon from '../images/coffee.webp';
 import React from "react";
 
@@ -11,19 +11,15 @@ const Navbar = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.au.edu.az/az/"
+            href=""
           >
-            <img
-              className="website-logo"
-              src={fccLogo}
-              alt="audevelopers logo"
-            />
+            
           </a>
           <a
             className="support-link"
             target="_blank"
             rel="noreferrer"
-            href="https://buymeacoffee.com/audevelopers"
+            href="https://buymeacoffee.com/tunarjamalov"
           >
             <img src={coffeeIcon} alt="Coffee Icon" className="coffee-icon" />
             Bizə dəstək ol!
