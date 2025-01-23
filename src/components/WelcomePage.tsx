@@ -1,6 +1,6 @@
 import rpgMenu from "../images/b.webp";
 import mainCharacter from "../images/personau2.webp";
-import fccBackground from "../images/b.webp";
+
 import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import "../stylesheets/HomepageRow.css";

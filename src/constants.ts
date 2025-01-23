@@ -54,4 +54,4 @@ export const ALL_CATEGORIES = [
   ...mapQuizCategory(regexQuiz, "Regex")
 ];
 
-export const ROUNDED_QUESTION_COUNT = 1200;
+export const ROUNDED_QUESTION_COUNT = 200;

@@ -38,41 +38,38 @@
   position: relative;
   z-index: 2;
   animation: fadeInUp 1s ease-out;
+  padding: 0 1rem;
 }
 
 .hero-text {
   margin-bottom: 2.5rem;
-  padding: 20px;
-  font-family: Lato, sans-serif;
-  text-align: center;
-  letter-spacing: 1px;
-  line-height: 1.5em;
-  background-color: var(--bg-primary-transparent);
-  box-shadow: inset -5px -6px var(--box-shadow-inset);
 }
 
 .hero-text h1 {
-  font-size: 4rem;
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
   color: white;
   margin-bottom: 1.5rem;
   background: linear-gradient(45deg, #fff, #64b5f6);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 2px 30px rgba(100, 181, 246, 0.2);
+  line-height: 1.2;
 }
 
 .hero-text h2 {
-  font-size: 1.8rem;
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
   color: #b3b3b3;
   font-weight: 400;
   line-height: 1.5;
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .question-count {
-  font-size: 2.2rem;
+  font-size: clamp(1.3rem, 3.5vw, 2.2rem);
   color: #64b5f6;
   font-weight: 700;
   display: inline-block;
@@ -81,12 +78,12 @@
 }
 
 .hero-button {
-  margin-top: 3rem;
+  margin-top: clamp(2rem, 5vh, 3rem);
 }
 
 .hero-button a {
-  font-size: 1.2rem;
-  padding: 1rem 2.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
   border-radius: 50px;
   background: linear-gradient(45deg, #64b5f6, #2196f3);
   color: white;
@@ -96,11 +93,16 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
   display: inline-block;
+  white-space: nowrap;
 }
 
 .hero-button a:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+}
+
+.hero-button a:active {
+  transform: translateY(-1px);
 }
 
 @keyframes fadeInUp {
@@ -126,25 +128,47 @@
   }
 }
 
+/* Mobile Optimizations */
 @media (max-width: 768px) {
   .hero-container {
     padding: 5rem 1rem;
+    min-height: calc(100vh - 60px); /* Account for fixed navbar */
   }
 
-  .hero-text h1 {
-    font-size: 2.5rem;
+  .hero-content {
+    padding: 0;
+  }
+
+  .hero-text {
+    margin-bottom: 2rem;
   }
 
   .hero-text h2 {
-    font-size: 1.3rem;
+    padding: 0 0.5rem;
   }
 
-  .question-count {
-    font-size: 1.6rem;
+  .hero-button {
+    margin-top: 1.5rem;
   }
 
   .hero-button a {
-    font-size: 1.1rem;
-    padding: 0.8rem 2rem;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 380px) {
+  .hero-container {
+    padding: 4rem 0.5rem;
+  }
+
+  .hero-text h1 {
+    margin-bottom: 1rem;
+  }
+
+  .hero-text h2 {
+    padding: 0;
   }
 }

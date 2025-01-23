@@ -1,7 +1,7 @@
 import "../stylesheets/Navbar.css";
 
 import coffeeIcon from '../images/coffee.webp';
-import React from "react";
+
 
 const Navbar = () => {
   return (
