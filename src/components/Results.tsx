@@ -8,7 +8,7 @@ const Results: React.FC<PointTotals> = ({
   resetQuiz
 }: PointTotals) => {
   const totalPercentageCorrect = (Math.floor(points) / totalQuestions) * 100;
-  const tweetMessage = `http://twitter.com/intent/tweet?text=I just scored ${totalPercentageCorrect}%25 on www.audevelopers.com. Wanna try it for yourself?&hashtags=audevelopers`;
+  const tweetMessage = `http://twitter.com/intent/tweet?text=I just scored ${totalPercentageCorrect}%25 on www.developerquiz.az Wanna try it for yourself?&hashtags=developerquizaz`;
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -65,7 +65,7 @@ const Results: React.FC<PointTotals> = ({
         Yenidən oyna!
       </button>
 
-      {totalPercentageCorrect >= 70 && (
+      {totalPercentageCorrect >= 0 && (
         <a
           target="_blank"
           rel="noreferrer"

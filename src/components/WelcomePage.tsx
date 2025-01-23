@@ -1,6 +1,6 @@
 import rpgMenu from "../images/rpg-menu.webp";
 import mainCharacter from "../images/personau2.webp";
-import fccBackground from "../images/au4.webp";
+import fccBackground from "../images/b.webp";
 import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import "../stylesheets/HomepageRow.css";
@@ -48,15 +48,7 @@ const WelcomePage: React.FC = () => {
           <div className="col-md-7 order-md-2 content-text-container">
             <h2 className="featurette-heading">Biz kimik?</h2>
             <p className="lead">
-            Universitetimiz haqqında məlumat əldə et!{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.au.edu.az/az/"
-              >
-                au.edu.az
-              </a>
-              .
+            "Developer Quiz - Proqramlaşdırma biliklərinizi sınamaq və təkmilləşdirmək üçün yaradılmış interaktiv platformadır. Biz kodlaşdırma sevənləri bir araya gətirərək öyrənmə və əyləncə dolu bir mühit təmin edirik."
             </p>
             <p className="lead">
     Bizi sosial medyada da izləyin:
@@ -106,7 +98,7 @@ const WelcomePage: React.FC = () => {
         >
           <div className="col-md-7 order-md-2 content-text-container">
             <p className="lead">
-            Copyright © 2024 Au Developers
+            Copyright © 2025 Developer Quiz
             </p>
           </div>
          
