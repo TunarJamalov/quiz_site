@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import { PointTotals } from "../types";
+import "../stylesheets/Results.css";
 
 const Results: React.FC<PointTotals> = ({
   points,
@@ -18,7 +19,6 @@ const Results: React.FC<PointTotals> = ({
   const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
-    // Update window size when it changes
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
@@ -27,45 +27,48 @@ const Results: React.FC<PointTotals> = ({
     };
 
     window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener on unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     if (points === totalQuestions) {
       setShowConfetti(true);
-
-      // Remove the confetti after 5 seconds
-      const confettiTimeout = setTimeout(() => {
-        setShowConfetti(false);
-      }, 5000);
-
-      // Clean up the timeout on unmount
-      return () => {
-        clearTimeout(confettiTimeout);
-      };
+      const confettiTimeout = setTimeout(() => setShowConfetti(false), 5000);
+      return () => clearTimeout(confettiTimeout);
     }
   }, [points, totalQuestions]);
 
+  const getResultMessage = () => {
+    if (points === totalQuestions) return "Əla nəticə! 🎉";
+    if (totalPercentageCorrect >= 80) return "Çox yaxşı! 🌟";
+    if (totalPercentageCorrect >= 60) return "Yaxşı! 👍";
+    return "Davam et! 💪";
+  };
+
   return (
     <div className="results-div">
-      <h1 className="results-heading">Nəticə</h1>
+      <h1 className="results-heading">{getResultMessage()}</h1>
       {showConfetti && (
-        <Confetti width={windowSize.width} height={windowSize.height} />
+        <Confetti
+          width={windowSize.width}
+          height={windowSize.height}
+          recycle={false}
+          numberOfPieces={200}
+        />
       )}
       <h2>
-        {points === totalQuestions ? "Əla nəticə!" : "Siz"}{" "}
         {totalQuestions} xal üzərindən {points} xal qazandınız
+        <br />
+        <small style={{ fontSize: "0.8em", color: "#666" }}>
+          ({totalPercentageCorrect}%)
+        </small>
       </h2>
 
       <button onClick={resetQuiz} className="results-btn">
         Yenidən oyna!
       </button>
 
-      {totalPercentageCorrect >= 0 && (
+      {totalPercentageCorrect > 0 && (
         <a
           target="_blank"
           rel="noreferrer"
@@ -78,4 +81,5 @@ const Results: React.FC<PointTotals> = ({
     </div>
   );
 };
+
 export default Results;

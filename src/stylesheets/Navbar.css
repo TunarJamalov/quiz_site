@@ -2,23 +2,43 @@
 
 /* Header stili */
 header {
-  height: 55px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  background-color: var(--bg-primary);
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 35, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 /* Navbar stili */
 .homepage-navbar {
-  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding: 10px 20px;
-  box-sizing: border-box;
+  padding: 0 2rem;
+  height: 100%;
+}
+
+/* Logo stili */
+.website-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.website-logo:hover {
+  transform: scale(1.05);
 }
 
 /* Destek bağlantısı */
@@ -27,12 +47,19 @@ header {
   align-items: center;
   text-decoration: none;
   color: white;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
 }
 
 .support-link:hover {
-  color: yellow; /* Hover rengi */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+  color: white;
 }
 
 /* Coffee ikonu */
@@ -40,28 +67,30 @@ header {
   width: 24px;
   height: 24px;
   margin-right: 8px;
+  transition: transform 0.3s ease;
 }
 
-/* Logo stili */
-.website-logo {
-  width: auto;
-  height: 35px;
-  margin: 0;
+.support-link:hover .coffee-icon {
+  transform: rotate(10deg);
 }
 
 /* Mobil uyumluluk */
-@media screen and (max-width: 590px) {
+@media (max-width: 768px) {
+  header {
+    height: 60px;
+  }
+
   .homepage-navbar {
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
+    padding: 0 1rem;
   }
 
   .support-link {
-    margin-top: 1px;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 
-  .website-logo {
-    margin-bottom: 1px;
+  .coffee-icon {
+    width: 20px;
+    height: 20px;
   }
 }

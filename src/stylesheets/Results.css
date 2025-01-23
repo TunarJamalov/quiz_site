@@ -1,0 +1,110 @@
+.results-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 60vh;
+  text-align: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 800px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.results-heading {
+  font-size: 3rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.results-div h2 {
+  font-size: 1.8rem;
+  color: #34495e;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.results-btn {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.results-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(52, 152, 219, 0.3);
+}
+
+.results-btn:active {
+  transform: translateY(-1px);
+}
+
+.results-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #3498db;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.results-text:hover {
+  color: #2980b9;
+}
+
+.results-text i {
+  font-size: 1.3rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .results-div {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .results-heading {
+    font-size: 2.5rem;
+  }
+
+  .results-div h2 {
+    font-size: 1.5rem;
+  }
+
+  .results-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+  }
+}
