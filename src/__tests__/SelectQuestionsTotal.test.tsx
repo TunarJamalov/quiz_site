@@ -1,27 +1,52 @@
 import SelectQuestionsTotal from "../components/SelectQuestionsTotal";
-import { render, cleanup } from "@testing-library/react";
-import { expect, afterEach, describe, it, vi } from "vitest";
+import { render, cleanup, screen, fireEvent } from "@testing-library/react";
+import { vi } from "vitest";
 
 afterEach(cleanup);
 
-describe("Select Quiz", () => {
-  it("renders without crashing", () => {
-    render(<SelectQuestionsTotal startQuiz={vi.fn()} totalQuestions={0} />);
-  });
-  it("has a button for every quiz question amount under 600", () => {
-    const { getByText } = render(
-      <SelectQuestionsTotal startQuiz={vi.fn()} totalQuestions={600} />
+describe("SelectQuestionsTotal", () => {
+  const startQuizMock = vi.fn();
+  const totalQuestions = 10;
+
+  const QUESTION_NUMS = [5, 10, 15, 20, 25]; // Example available lengths in your constants
+
+  it("displays the available quiz lengths correctly", () => {
+    render(
+      <SelectQuestionsTotal totalQuestions={totalQuestions} startQuiz={startQuizMock} />
     );
-    expect(getByText("10").textContent).toBeDefined();
-    expect(getByText("25").textContent).toBeDefined();
-    expect(getByText("50").textContent).toBeDefined();
-    expect(getByText("All (600)").textContent).toBeDefined();
+
+    // Check if available lengths are displayed
+    QUESTION_NUMS.filter(length => length <= totalQuestions).forEach(choice => {
+      expect(screen.getByText(choice.toString())).toBeInTheDocument();
+    });
+
+    // Check if "Hamısı" button is displayed
+    expect(screen.getByText(`Hamısı (${totalQuestions})`)).toBeInTheDocument();
   });
 
-  it("Has a button for max amount equal to 601", () => {
-    const { getByText } = render(
-      <SelectQuestionsTotal startQuiz={vi.fn()} totalQuestions={601} />
+  it("calls startQuiz with the correct number of questions when a length button is clicked", () => {
+    render(
+      <SelectQuestionsTotal totalQuestions={totalQuestions} startQuiz={startQuizMock} />
     );
-    expect(getByText("All (601)").textContent).toBeDefined();
+
+    // Click on a number button (e.g., 5)
+    const lengthButton = screen.getByText("5");
+    fireEvent.click(lengthButton);
+
+    // Check if startQuiz is called with the correct argument
+    expect(startQuizMock).toHaveBeenCalledWith(5);
+  });
+
+  it("calls startQuiz with the totalQuestions when 'Hamısı' button is clicked", () => {
+    render(
+      <SelectQuestionsTotal totalQuestions={totalQuestions} startQuiz={startQuizMock} />
+    );
+
+    // Click on 'Hamısı' button
+    const allButton = screen.getByText(`Hamısı (${totalQuestions})`);
+    fireEvent.click(allButton);
+
+    // Check if startQuiz is called with the totalQuestions argument
+    expect(startQuizMock).toHaveBeenCalledWith(totalQuestions);
   });
 });
