@@ -57,8 +57,7 @@ const WelcomePage: React.FC = () => {
                 rel="noreferrer"
                 className="social-link"
               >
-                <i className="fab fa-github"></i>
-                GitHub
+                <i className="fab fa-github"></i> GitHub
               </a>
               <a
                 href="https://www.linkedin.com/in/tunar-camalov-22a7a1255/"
@@ -66,8 +65,7 @@ const WelcomePage: React.FC = () => {
                 rel="noreferrer"
                 className="social-link"
               >
-                <i className="fab fa-linkedin"></i>
-                LinkedIn
+                <i className="fab fa-linkedin"></i> LinkedIn
               </a>
               <a
                 href="https://twitter.com/stabilexe"
@@ -75,8 +73,7 @@ const WelcomePage: React.FC = () => {
                 rel="noreferrer"
                 className="social-link"
               >
-                <i className="fab fa-twitter"></i>
-                Twitter
+                <i className="fab fa-twitter"></i> Twitter
               </a>
             </div>
           </div>
