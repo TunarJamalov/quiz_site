@@ -3,7 +3,7 @@ import agileQuiz from "./data/agile-quiz";
 import cloudComputingQuiz from "./data/cloud-computing-quiz";
 import cssQuiz from "./data/css-quiz";
 import devopsQuiz from "./data/devops-quiz";
-import freecodecampQuiz from "./data/freecodecamp-quiz";
+
 import generalCSQuiz from "./data/general-cs-quiz";
 import gitQuiz from "./data/git-quiz";
 import htmlQuiz from "./data/html-quiz";
@@ -39,7 +39,6 @@ export const ALL_CATEGORIES = [
   ...mapQuizCategory(cssQuiz, "CSS"),
   ...mapQuizCategory(cloudComputingQuiz, "Cloud Computing"),
   ...mapQuizCategory(devopsQuiz, "DevOps"),
-  ...mapQuizCategory(freecodecampQuiz, "freeCodeCamp"),
   ...mapQuizCategory(generalCSQuiz, "General CS"),
   ...mapQuizCategory(gitQuiz, "Git"),
   ...mapQuizCategory(htmlQuiz, "HTML"),

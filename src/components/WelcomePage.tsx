@@ -61,7 +61,7 @@ const WelcomePage: React.FC = () => {
                 GitHub
               </a>
               <a
-                href="https://www.linkedin.com/in/tunar-jamalov/"
+                href="https://www.linkedin.com/in/tunar-camalov-22a7a1255/"
                 target="_blank"
                 rel="noreferrer"
                 className="social-link"
@@ -70,7 +70,7 @@ const WelcomePage: React.FC = () => {
                 LinkedIn
               </a>
               <a
-                href="https://twitter.com/TunarJamalov"
+                href="https://twitter.com/stabilexe"
                 target="_blank"
                 rel="noreferrer"
                 className="social-link"
