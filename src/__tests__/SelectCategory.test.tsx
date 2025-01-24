@@ -1,6 +1,6 @@
 import SelectCategory from "../components/SelectCategory";
-import { render, cleanup, RenderResult } from "@testing-library/react";
-import { expect, afterEach, describe, it } from "vitest";
+import { render, cleanup, screen, fireEvent } from "@testing-library/react";
+import {afterEach, vi ,describe} from "vitest";
 
 afterEach(cleanup);
 
@@ -17,22 +17,59 @@ describe("SelectCategory", () => {
     "SQL"
   ];
 
+  const selectQuizMock = vi.fn();
+  const startRandomQuizMock = vi.fn();
+
   it("displays the Choose a Category screen", () => {
-    const { getByText }: RenderResult = render(
-      <SelectCategory selectQuiz={undefined as any} startRandomQuiz={undefined as any} />
+    render(
+      <SelectCategory
+        selectQuiz={selectQuizMock}
+        startRandomQuiz={startRandomQuizMock}
+      />
     );
-    expect(getByText("Choose a Category")).toBeInTheDocument();
+    expect(screen.getByText("Kategoriya seç.")).toBeInTheDocument();
   });
 
   it("displays the correct categories", () => {
-    const { getByText } = render(
-      <SelectCategory selectQuiz={undefined as any} startRandomQuiz={undefined as any} />
+    render(
+      <SelectCategory
+        selectQuiz={selectQuizMock}
+        startRandomQuiz={startRandomQuizMock}
+      />
     );
+
     selectCategoryArr.forEach(category => {
-      expect(getByText(category)).toBeInTheDocument();
+      expect(screen.getByText(category)).toBeInTheDocument();
     });
-    expect(getByText("HTML")).toBeInTheDocument();
-    expect(getByText("CSS")).toBeInTheDocument();
-    expect(getByText("JavaScript")).toBeInTheDocument();
+  });
+
+  it("calls selectQuiz when a category button is clicked", () => {
+    render(
+      <SelectCategory
+        selectQuiz={selectQuizMock}
+        startRandomQuiz={startRandomQuizMock}
+      />
+    );
+
+    const firstCategoryButton = screen.getByText(selectCategoryArr[0]);
+    fireEvent.click(firstCategoryButton);
+
+    // Check if selectQuiz mock function is called with the correct category and index
+    expect(selectQuizMock).toHaveBeenCalledWith(selectCategoryArr[0], 0);
+  });
+
+  it("calls startRandomQuiz when the 'Random' button is clicked", () => {
+    render(
+      <SelectCategory
+        selectQuiz={selectQuizMock}
+        startRandomQuiz={startRandomQuizMock}
+      />
+    );
+
+    const randomButton = screen.getByText("Random");
+    fireEvent.click(randomButton);
+
+    // Check if startRandomQuiz is called
+    expect(startRandomQuizMock).toHaveBeenCalled();
   });
 });
