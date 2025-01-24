@@ -1,47 +1,81 @@
-import Results from "../components/Results";
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, screen } from "@testing-library/react";
 import { vi } from "vitest";
+import Results from "../components/Results";
 import { expect, afterEach, describe, it } from "vitest";
 
+// Cleanup after each test
 afterEach(cleanup);
 
-// Mock the react-confetti module to prevent rendering actual confetti
+// Mock the react-confetti module to prevent actual rendering of Confetti
 vi.mock("react-confetti", () => ({
   default: () => <div data-testid="confetti-mock" />
 }));
 
-describe("Results", () => {
+describe("Results Component", () => {
   const resetQuizMock = vi.fn();
 
-  it("Renders without crashing", () => {
+  it("renders without crashing", () => {
     render(<Results points={0} totalQuestions={10} resetQuiz={resetQuizMock} />);
   });
 
-  it("Displays the accurate score for wrong answers", () => {
-    const { getByText } = render(
-      <Results points={0} totalQuestions={10} resetQuiz={resetQuizMock} />
-    );
-    // Use a regex to match the text content and allow for flexibility
-    expect(getByText(/You received 0 out of 10 points/i)).toBeInTheDocument();
+  it("displays the correct result message for perfect score", () => {
+    render(<Results points={10} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    expect(screen.getByText("Əla nəticə! 🎉")).toBeInTheDocument();
   });
 
-  it("Displays the perfect score message if all answers are correct", () => {
-    const { getByText } = render(
-      <Results points={10} totalQuestions={10} resetQuiz={resetQuizMock} />
-    );
-    expect(
-      getByText("Wow! Perfect Score! 10 out of 10 points").textContent
-    ).toBeDefined();
+  it("displays the correct result message for high score", () => {
+    render(<Results points={8} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    expect(screen.getByText("Çox yaxşı! 🌟")).toBeInTheDocument();
   });
 
-  it("renders with perfect score and showConfetti is true", () => {
-    const props = {
-      points: 10,
-      totalQuestions: 10,
-      resetQuiz: resetQuizMock
-    };
-    const { getByTestId } = render(<Results {...props} />);
-    const confettiElement = getByTestId("confetti-mock");
+  it("displays the correct result message for medium score", () => {
+    render(<Results points={6} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    expect(screen.getByText("Yaxşı! 👍")).toBeInTheDocument();
+  });
+
+  it("displays the correct result message for low score", () => {
+    render(<Results points={3} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    expect(screen.getByText("Davam et! 💪")).toBeInTheDocument();
+  });
+
+  it("displays the score message correctly", () => {
+    render(<Results points={5} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    expect(screen.getByText("10 xal üzərindən 5 xal qazandınız")).toBeInTheDocument();
+    expect(screen.getByText("(50%)")).toBeInTheDocument();
+  });
+
+  it("shows the confetti when the user achieves a perfect score", () => {
+    render(<Results points={10} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    const confettiElement = screen.getByTestId("confetti-mock");
     expect(confettiElement).toBeInTheDocument();
+  });
+
+  it("does not show confetti for a score that is not perfect", () => {
+    render(<Results points={8} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    const confettiElement = screen.queryByTestId("confetti-mock");
+    expect(confettiElement).not.toBeInTheDocument();
+  });
+
+  it("calls the resetQuiz function when the button is clicked", () => {
+    render(<Results points={5} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    const button = screen.getByText("Yenidən oyna!");
+    button.click();
+    expect(resetQuizMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("shows the tweet link when score is greater than 0", () => {
+    render(<Results points={5} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    const tweetLink = screen.getByText("Öz rekorunu paylaş!");
+    expect(tweetLink).toBeInTheDocument();
+    expect(tweetLink).toHaveAttribute(
+      "href",
+      expect.stringContaining("http://twitter.com/intent/tweet")
+    );
+  });
+
+  it("does not show the tweet link when score is 0", () => {
+    render(<Results points={0} totalQuestions={10} resetQuiz={resetQuizMock} />);
+    const tweetLink = screen.queryByText("Öz rekorunu paylaş!");
+    expect(tweetLink).not.toBeInTheDocument();
   });
 });
