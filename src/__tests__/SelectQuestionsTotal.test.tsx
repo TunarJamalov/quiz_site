@@ -7,36 +7,32 @@ afterEach(cleanup);
 describe("SelectQuestionsTotal", () => {
   const startQuizMock = vi.fn();
   const totalQuestions = 10;
-  const QUESTION_NUMS = [5, 10, 15, 20, 25];
 
   it("displays the available quiz lengths correctly", () => {
     render(
       <SelectQuestionsTotal totalQuestions={totalQuestions} startQuiz={startQuizMock} />
     );
 
-    // Check if available lengths are displayed correctly (up to the totalQuestions value)
-    QUESTION_NUMS.filter(length => length <= totalQuestions).forEach(choice => {
-      // Look for elements containing the number, regardless of the element type
-      const element = screen.getByText(choice.toString());
-      expect(element).toBeInTheDocument();
-    });
+    // Check if the total questions button is displayed
+    const totalButton = screen.getByText("10");
+    expect(totalButton).toBeInTheDocument();
 
     // Check if "Hamısı" button is displayed correctly
     const allButton = screen.getByText(`Hamısı (${totalQuestions})`);
     expect(allButton).toBeInTheDocument();
   });
 
-  it("calls startQuiz with the correct number of questions when a length button is clicked", () => {
+  it("calls startQuiz with the total questions when number button is clicked", () => {
     render(
       <SelectQuestionsTotal totalQuestions={totalQuestions} startQuiz={startQuizMock} />
     );
 
-    // Click on a number button (e.g., 5)
-    const lengthButton = screen.getByText("5");
+    // Click on the number button
+    const lengthButton = screen.getByText("10");
     fireEvent.click(lengthButton);
 
     // Check if startQuiz is called with the correct argument
-    expect(startQuizMock).toHaveBeenCalledWith(5);
+    expect(startQuizMock).toHaveBeenCalledWith(10);
   });
 
   it("calls startQuiz with the totalQuestions when 'Hamısı' button is clicked", () => {
