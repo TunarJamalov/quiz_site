@@ -48,7 +48,7 @@ const WelcomePage: React.FC = () => {
           <div className="col-md-7 order-md-2 content-text-container">
             <h2 className="featurette-heading">Biz kimik?</h2>
             <p className="lead">
-              "Developer Quiz - Proqramlaşdırma biliklərinizi sınamaq və təkmilləşdirmək üçün yaradılmış interaktiv platformadır. Biz kodlaşdırma sevənləri bir araya gətirərək öyrənmə və əyləncə dolu bir mühit təmin edirik."
+              &ldquo;Developer Quiz - Proqramlaşdırma biliklərinizi sınamaq və təkmilləşdirmək üçün yaradılmış interaktiv platformadır. Biz kodlaşdırma sevənləri bir araya gətirərək öyrənmə və əyləncə dolu bir mühit təmin edirik.&rdquo;
             </p>
             <div className="social-links">
               <a
