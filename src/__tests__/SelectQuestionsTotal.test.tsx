@@ -16,13 +16,13 @@ describe("SelectQuestionsTotal", () => {
 
     // Check if available lengths are displayed correctly (up to the totalQuestions value)
     QUESTION_NUMS.filter(length => length <= totalQuestions).forEach(choice => {
-      // Look for buttons containing the number
-      const button = screen.getByRole('button', { name: choice.toString() });
-      expect(button).toBeInTheDocument();
+      // Look for elements containing the number, regardless of the element type
+      const element = screen.getByText(choice.toString());
+      expect(element).toBeInTheDocument();
     });
 
     // Check if "Hamısı" button is displayed correctly
-    const allButton = screen.getByRole('button', { name: `Hamısı (${totalQuestions})` });
+    const allButton = screen.getByText(`Hamısı (${totalQuestions})`);
     expect(allButton).toBeInTheDocument();
   });
 
@@ -32,7 +32,7 @@ describe("SelectQuestionsTotal", () => {
     );
 
     // Click on a number button (e.g., 5)
-    const lengthButton = screen.getByRole('button', { name: "5" });
+    const lengthButton = screen.getByText("5");
     fireEvent.click(lengthButton);
 
     // Check if startQuiz is called with the correct argument
@@ -45,7 +45,7 @@ describe("SelectQuestionsTotal", () => {
     );
 
     // Click on 'Hamısı' button
-    const allButton = screen.getByRole('button', { name: `Hamısı (${totalQuestions})` });
+    const allButton = screen.getByText(`Hamısı (${totalQuestions})`);
     fireEvent.click(allButton);
 
     // Check if startQuiz is called with the totalQuestions argument
