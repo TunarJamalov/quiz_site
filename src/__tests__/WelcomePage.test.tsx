@@ -1,4 +1,4 @@
-import React from "react";
+
 import WelcomePage from "../components/WelcomePage";
 import { cleanup, render } from "@testing-library/react";
 import { HashRouter as Router } from "react-router-dom";

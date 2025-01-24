@@ -1,4 +1,3 @@
-import React from "react";
 import App from "../App";
 import { cleanup, render } from "@testing-library/react";
 import { HashRouter as Router } from "react-router-dom";
