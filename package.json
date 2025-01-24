@@ -62,7 +62,6 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react": "^7.34.3",
     "happy-dom": "^14.12.3",
-    "husky": "^9.0.0",
     "lint-staged": "^15.0.0",
     "prettier": "^3.0.0",
     "pretty-quick": "^4.0.0",
@@ -73,11 +72,15 @@
   },
   "lint-staged": {
     "*.ts": "eslint",
-    "*.tsx": "eslint"
+    "*.tsx": "eslint",
+    "*.js": "eslint",
+    "*.jsx": "eslint",
+    "*.json": "prettier --check",
+    "*.css": "prettier --check"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged"
+      "pre-commit": "lint-staged && npm test"
     }
   }
 }
