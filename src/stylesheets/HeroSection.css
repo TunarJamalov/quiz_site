@@ -76,6 +76,9 @@
   width: 100%;
   margin-bottom: 2rem;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-button a {
@@ -138,12 +141,18 @@
 
   .hero-button {
     margin-bottom: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .hero-button a {
     width: auto;
-    padding: 1rem 3rem;
-    font-size: 1.2rem;
+    min-width: 200px;
+    max-width: 300px;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    margin: 0;
   }
 
   .support-button {
