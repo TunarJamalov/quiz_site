@@ -8,19 +8,20 @@ describe("SelectQuestionsTotal", () => {
   const startQuizMock = vi.fn();
   const totalQuestions = 10;
 
-  const QUESTION_NUMS = [5, 10, 15, 20, 25]; // Example available lengths in your constants
+  // Assuming QUESTION_NUMS contains values like this
+  const QUESTION_NUMS = [5, 10, 15, 20, 25]; 
 
   it("displays the available quiz lengths correctly", () => {
     render(
       <SelectQuestionsTotal totalQuestions={totalQuestions} startQuiz={startQuizMock} />
     );
 
-    // Check if available lengths are displayed
+    // Check if available lengths are displayed correctly (up to the totalQuestions value)
     QUESTION_NUMS.filter(length => length <= totalQuestions).forEach(choice => {
       expect(screen.getByText(choice.toString())).toBeInTheDocument();
     });
 
-    // Check if "Hamısı" button is displayed
+    // Check if "Hamısı" button is displayed correctly
     expect(screen.getByText(`Hamısı (${totalQuestions})`)).toBeInTheDocument();
   });
 
