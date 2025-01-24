@@ -1,7 +1,7 @@
 import SelectCategory from "../components/SelectCategory";
 import { render, cleanup, screen, fireEvent } from "@testing-library/react";
 import {afterEach, vi ,describe} from "vitest";
-
+import React from "react";
 afterEach(cleanup);
 
 describe("SelectCategory", () => {

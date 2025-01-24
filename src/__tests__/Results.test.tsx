@@ -2,7 +2,7 @@ import { render, cleanup, screen } from "@testing-library/react";
 import { vi } from "vitest";
 import Results from "../components/Results";
 import { expect, afterEach, describe, it } from "vitest";
-
+import React from "react";
 // Cleanup after each test
 afterEach(cleanup);
 

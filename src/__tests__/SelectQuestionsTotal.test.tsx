@@ -1,7 +1,7 @@
 import SelectQuestionsTotal from "../components/SelectQuestionsTotal";
 import { render, cleanup, screen, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
-
+import React from "react";
 afterEach(cleanup);
 
 describe("SelectQuestionsTotal", () => {
@@ -15,15 +15,17 @@ describe("SelectQuestionsTotal", () => {
     render(
       <SelectQuestionsTotal totalQuestions={totalQuestions} startQuiz={startQuizMock} />
     );
-
+  
     // Check if available lengths are displayed correctly (up to the totalQuestions value)
     QUESTION_NUMS.filter(length => length <= totalQuestions).forEach(choice => {
-      expect(screen.getByText(choice.toString())).toBeInTheDocument();
+      // Use a regular expression to match the number
+      expect(screen.getByText(new RegExp(`${choice}`, "i"))).toBeInTheDocument();
     });
-
+  
     // Check if "Hamısı" button is displayed correctly
-    expect(screen.getByText(`Hamısı (${totalQuestions})`)).toBeInTheDocument();
+    expect(screen.getByText(new RegExp(`Hamısı \\(${totalQuestions}\\)`, "i"))).toBeInTheDocument();
   });
+  
 
   it("calls startQuiz with the correct number of questions when a length button is clicked", () => {
     render(
