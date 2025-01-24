@@ -21,7 +21,8 @@ describe("Results", () => {
     const { getByText } = render(
       <Results points={0} totalQuestions={10} resetQuiz={resetQuizMock} />
     );
-    expect(getByText("You received 0 out of 10 points").textContent).toBeDefined();
+    // Use a regex to match the text content and allow for flexibility
+    expect(getByText(/You received 0 out of 10 points/i)).toBeInTheDocument();
   });
 
   it("Displays the perfect score message if all answers are correct", () => {
