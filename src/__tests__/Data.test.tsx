@@ -1,6 +1,5 @@
 import { ALL_CATEGORIES } from "../constants";
 import { test, expect, describe } from "vitest";
-import React from "react";
 describe("Every question is valid", () => {
   test.each(ALL_CATEGORIES)(
     "Every question has an answer, explanation, a link and three distractions",

@@ -1,4 +1,5 @@
 import "../stylesheets/Navbar.css";
+import React from "react";
 
 import coffeeIcon from '../images/coffee.webp';
 
