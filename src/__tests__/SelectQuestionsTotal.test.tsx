@@ -7,25 +7,24 @@ afterEach(cleanup);
 describe("SelectQuestionsTotal", () => {
   const startQuizMock = vi.fn();
   const totalQuestions = 10;
-
-  // Assuming QUESTION_NUMS contains values like this
-  const QUESTION_NUMS = [5, 10, 15, 20, 25]; 
+  const QUESTION_NUMS = [5, 10, 15, 20, 25];
 
   it("displays the available quiz lengths correctly", () => {
     render(
       <SelectQuestionsTotal totalQuestions={totalQuestions} startQuiz={startQuizMock} />
     );
-  
+
     // Check if available lengths are displayed correctly (up to the totalQuestions value)
     QUESTION_NUMS.filter(length => length <= totalQuestions).forEach(choice => {
-      // Use a regular expression to match the number
-      expect(screen.getByText(new RegExp(`${choice}`, "i"))).toBeInTheDocument();
+      // Look for buttons containing the number
+      const button = screen.getByRole('button', { name: choice.toString() });
+      expect(button).toBeInTheDocument();
     });
-  
+
     // Check if "Hamısı" button is displayed correctly
-    expect(screen.getByText(new RegExp(`Hamısı \\(${totalQuestions}\\)`, "i"))).toBeInTheDocument();
+    const allButton = screen.getByRole('button', { name: `Hamısı (${totalQuestions})` });
+    expect(allButton).toBeInTheDocument();
   });
-  
 
   it("calls startQuiz with the correct number of questions when a length button is clicked", () => {
     render(
@@ -33,7 +32,7 @@ describe("SelectQuestionsTotal", () => {
     );
 
     // Click on a number button (e.g., 5)
-    const lengthButton = screen.getByText("5");
+    const lengthButton = screen.getByRole('button', { name: "5" });
     fireEvent.click(lengthButton);
 
     // Check if startQuiz is called with the correct argument
@@ -46,7 +45,7 @@ describe("SelectQuestionsTotal", () => {
     );
 
     // Click on 'Hamısı' button
-    const allButton = screen.getByText(`Hamısı (${totalQuestions})`);
+    const allButton = screen.getByRole('button', { name: `Hamısı (${totalQuestions})` });
     fireEvent.click(allButton);
 
     // Check if startQuiz is called with the totalQuestions argument
